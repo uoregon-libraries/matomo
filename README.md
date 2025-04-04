@@ -4,14 +4,14 @@ This project aims to set up a useful OWA service for UO.
 
 ## Development Setup
 
-1. Copy `docker-compose.override.yml-example` to `docker-compose.override.yml`
+1. Copy `compose.override.yml-example` to `compose.override.yml`
    and alter it as needed; this is where you specify on which port OWA is
    listening, add volume mounts if desired, and do anything else that's
    specific to your environment.
 2. Copy `env-example` to `.env` in order to set up the OWA database password,
    choose random values for the keys and salts the application uses, and set
    the public URL.
-   - **Whenever you change the port in your docker compose override, you need
+   - **Whenever you change the port in your compose override, you need
      to change the "public URL" in `.env`**
 3. If desired, copy `docker/owa.sql` into `docker/mysql-init` to skip some of
    the web-wizard setup.  This will create the database structure as well as
@@ -35,7 +35,7 @@ anything on production until you've read these steps.  Don't skip steps or
 alter the steps unless you are **100% certain that you know the consequences of
 doing so.**
 
-1. Copy `docker-compose.override.yml-example` to `docker-compose.override.yml`
+1. Copy `compose.override.yml-example` to `compose.override.yml`
    and alter it to specify the port you wish the OWA container to use.
    - You should **not** mount any local files into the running containers in
      production, as this makes the application less scalable and in some cases
@@ -50,7 +50,7 @@ doing so.**
 4. Enable the server for public access.  Do not do this before step 3.  You do
    not want somebody accidentally hitting the setup pages and hijacking the
    server, even if it's nothing more than a minor annoyance.
-5. Stop the containers, remove them (`docker-compose down` will do this), and
+5. Stop the containers, remove them (`podman compose down` will do this), and
    then restart them.
    - `/var/www/html/install.php` is not part of our docker image - the setup
      scripts only copy it there if it's needed.  Container removal kills that
