@@ -21,7 +21,7 @@ RUN a2ensite matomo.conf
 
 # Give PHP a useful amount of RAM
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-RUN sed -i "s/memory_limit\s*=/memory_limit = 1024M/g"  "$PHP_INI_DIR/php.ini"
+RUN sed -i "s/memory_limit\s*=.*/memory_limit = 1024M/g"  "$PHP_INI_DIR/php.ini"
 
 # Set up the custom entrypoint and init scripts
 COPY ./docker/bin/docker-entrypoint.sh /
