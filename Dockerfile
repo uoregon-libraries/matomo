@@ -11,7 +11,7 @@ RUN docker-php-ext-install \
     pdo_mysql
 
 # Install Matomo
-RUN curl -OL https://builds.matomo.org/matomo.zip && unzip ./matomo.zip && rm ./matomo.zip
+RUN curl -OL https://builds.matomo.org/matomo-latest.zip && unzip ./matomo-latest.zip && rm ./matomo-latest.zip
 
 # Set up apache configuration
 RUN a2enmod rewrite
